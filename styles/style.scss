@@ -1,0 +1,69 @@
+	/*
+	Credits:
+	css3please.com for the excellent cross-browser css3 gradients
+	@Joel_Siddall http://dribbble.com/Joel_Siddall for the Sweet Web Buttons PSD found at http://365psd.com/day/2-351/
+	*/
+
+body {
+	/*
+	For the sake of matching the PSD more closely and reset some stuff
+	*/
+	background-image: url(../assets/bg.png);
+}
+
+@mixin sweet_button($top, $bottom, $stroke:#fff, $font:white, $tshadow:black) {
+	padding: 6px 16px;
+	border: 1px solid $stroke;
+	border-radius: 5px;
+	color: $font;
+	text-decoration: none;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	background-color: $top;
+	background-image: -webkit-gradient(linear, left top, left bottom, from($top), to($bottom));
+	background-image: -webkit-linear-gradient(top, $top, $bottom);
+	background-image:    -moz-linear-gradient(top, $top, $bottom);
+	background-image:      -o-linear-gradient(top, $top, $bottom);
+	background-image:         linear-gradient(to bottom, $top, $bottom);
+	-webkit-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,0.3), 0px 1px 0px 0px rgba(0,0,0,0.2);
+	box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,0.3), 0px 1px 0px 0px rgba(0,0,0,0.2);
+	text-shadow: 0px 1px 0px rgba($tshadow, 0.7);
+	&:hover {
+		background-color: lighten($top, 10%);
+		background-image: -webkit-gradient(linear, left top, left bottom, from(lighten($top, 10%)), to(lighten($bottom, 10%)));
+		background-image: -webkit-linear-gradient(top, lighten($top, 10%), lighten($bottom, 10%));
+		background-image:    -moz-linear-gradient(top, lighten($top, 10%), lighten($bottom, 10%));
+		background-image:      -o-linear-gradient(top, lighten($top, 10%), lighten($bottom, 10%));
+		background-image:         linear-gradient(to bottom, lighten($top, 10%), lighten($bottom, 10%));
+	}
+	&:active {
+		background-color: $bottom;
+		background-image: -webkit-gradient(linear, left top, left bottom, from($bottom), to($top));
+		background-image: -webkit-linear-gradient(top, $bottom, $top);
+		background-image:    -moz-linear-gradient(top, $bottom, $top);
+		background-image:      -o-linear-gradient(top, $bottom, $top);
+		background-image:         linear-gradient(to bottom, $bottom, $top);
+		box-shadow: inset 0px 3px 4px -4px black;
+	}
+}
+
+a.blue {
+	@include sweet_button(#19a9e8, #1181de, #0c4d82);
+}
+
+a.black {
+	@include sweet_button(#6a6a6a, #4a4a4a, #151515);
+}
+
+a.orange {
+	@include sweet_button(#f6ca4b, #f2ab37, #a66e1c, #8a4610, #fffd64);
+}
+
+a.green {
+	@include sweet_button(#b6d97d, #88c151, #5f8639, #456525, #fffeb4);
+}
+
+a.grey {
+	@include sweet_button(#eef0f1, #dadce1, #989898, #666666, white);
+}
